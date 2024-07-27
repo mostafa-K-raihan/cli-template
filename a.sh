@@ -122,3 +122,4 @@ add a workflow called publish.yml
 add a release script
 "release": "pnpm run ci && changeset publish"
 
+add an .npmignore
