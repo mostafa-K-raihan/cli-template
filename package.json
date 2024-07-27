@@ -6,6 +6,7 @@
   },
   "version": "0.0.1",
   "description": "",
+  "private": false,
   "main": "index.js",
   "scripts": {
     "cli-link": "yarn --global unlink practice-cli || true; chmod +x ./dist/index.js && yarn --global link",
