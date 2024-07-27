@@ -17,6 +17,10 @@
     "ci": "pnpm lint && pnpm test && pnpm build",
     "release": "pnpm run ci && changeset publish"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
