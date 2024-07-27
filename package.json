@@ -1,0 +1,23 @@
+{
+  "name": "cli-template",
+  "bin": {
+    "cli": "./dist/index.js"
+  },
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cli-link": "yarn --global unlink practice-cli || true; chmod +x ./dist/index.js && yarn --global link",
+    "dev": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
