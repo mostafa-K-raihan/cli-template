@@ -1,5 +1,6 @@
 {
   "name": "cli-template",
+  "packageManager": "pnpm@9.6.0",
   "bin": {
     "cli": "./dist/index.js"
   },
@@ -8,14 +9,20 @@
   "main": "index.js",
   "scripts": {
     "cli-link": "yarn --global unlink practice-cli || true; chmod +x ./dist/index.js && yarn --global link",
-    "dev": "tsc -w"
+    "dev": "vitest",
+    "test": "vitest run",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc",
+    "ci": "pnpm lint && pnpm test && pnpm build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.12",
-    "typescript": "^5.5.4"
+    "tsup": "^8.2.3",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.4"
   },
   "dependencies": {
     "commander": "^12.1.0"
