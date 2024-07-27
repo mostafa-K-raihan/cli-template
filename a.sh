@@ -71,8 +71,6 @@ add .github/workflows/main.yml
 #     steps:
 #       - uses: actions/checkout@v4
 #       - uses: pnpm/action-setup@v4
-#         with:
-#           version: 8
 #       - uses: actions/setup-node@v4
 #         with:
 #           node-version: 20
@@ -81,4 +79,46 @@ add .github/workflows/main.yml
 #       - run: pnpm i --frozen-lockfile
 #       - run: pnpm run ci
 #
+
+add packageManager: "pnpm@9.6.0" or check the pnpm version
+pnpm add -D @changesets/cli
+pnpm changeset init
+change the base branch config to master if your repo has master instead of main
+
+
+Create a npm token
+use it in repo secret as NPM_TOKEN
+add a workflow called publish.yml
+# name: Publish
+# on:
+#   push:
+#     branches:
+#       - "master"
+#
+# concurrency: ${{ github.workflow }}-${{ github.ref }}
+#
+# jobs:
+#   publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: pnpm/action-setup@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#           cache: "pnpm"
+#
+#       - run: pnpm i --frozen-lockfile
+#       - name: Create Release PR Or Publish
+#         id: changesets
+#         uses: changesets/actions@v1
+#         with:
+#           publish: pnpm run release
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#
+
+add a release script
+"release": "pnpm run ci && changeset publish"
 
